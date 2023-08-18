@@ -14,19 +14,19 @@ phases:
   post_build:
     commands:
       # copy the contents of /build to S3
-      - aws s3 cp --recursive ./build s3://demoapi31static/ 
+      - aws s3 cp --recursive ./build s3://reactprojectp/ 
       # set the cache-control headers for service-worker.js to prevent
       # browser caching
       - >
         aws s3 cp  
         --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
-        ./build/service-worker.js s3://demoapi31static/
+        ./build/service-worker.js s3://reactprojectp/
       # set the cache-control headers for index.html to prevent
       # browser caching
       - >
         aws s3 cp  
         --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
-        ./build/index.html s3://demoapi31static/
+        ./build/index.html s3://reactprojectp/
       # invalidate the CloudFront cache for index.html and service-worker.js
       # to force CloudFront to update its edge locations with the new versions
       - >
